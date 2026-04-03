@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/your-repo-name/static/css/main.b03a2437.css",
-    "main.js": "/your-repo-name/static/js/main.06e3368b.js",
-    "index.html": "/your-repo-name/index.html",
-    "main.b03a2437.css.map": "/your-repo-name/static/css/main.b03a2437.css.map",
-    "main.06e3368b.js.map": "/your-repo-name/static/js/main.06e3368b.js.map"
+    "main.css": "/HushNotes/static/css/main.b03a2437.css",
+    "main.js": "/HushNotes/static/js/main.06e3368b.js",
+    "index.html": "/HushNotes/index.html",
+    "main.b03a2437.css.map": "/HushNotes/static/css/main.b03a2437.css.map",
+    "main.06e3368b.js.map": "/HushNotes/static/js/main.06e3368b.js.map"
   },
   "entrypoints": [
     "static/css/main.b03a2437.css",
