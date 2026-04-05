@@ -535,7 +535,7 @@ export default function Editor({
         {/* Page footer */}
         <div className="page-footer">
           <span>
-            <strong>Akhil Antony Joseph Rio</strong>
+            <strong>HushNotes</strong>
           </span>
         </div>
       </div>
