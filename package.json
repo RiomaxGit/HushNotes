@@ -1,7 +1,7 @@
 {
   "name": "wiki-app",
   "version": "1.0.0",
-  "homepage": "https://your-username.github.io/your-repo-name",
+  "homepage": "https://riomaxgit.github.io/HushNotes",
   "private": true,
   "dependencies": {
     "ajv": "^8.18.0",
