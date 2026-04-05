@@ -1,0 +1,1046 @@
+{
+  "appName": "HushNotes",
+  "pages": [
+    {
+      "id": "page-home",
+      "title": "Home",
+      "icon": "home",
+      "parentId": null,
+      "order": 0,
+      "createdAt": "2025-01-01T00:00:00Z",
+      "updatedAt": "2025-04-03T00:00:00Z",
+      "blocks": [
+        {
+          "id": "b-home-1",
+          "type": "heading1",
+          "content": "Welcome to HushNotes"
+        },
+        {
+          "id": "b-home-2",
+          "type": "callout",
+          "content": "\ud83d\udd10 This is your private digital book. All data lives only in data.json on your machine \u2014 nothing is stored in any cloud, server, or third-party service. Load, edit, and save locally.",
+          "variant": "info"
+        },
+        {
+          "id": "b-home-3",
+          "type": "heading2",
+          "content": "About This Book"
+        },
+        {
+          "id": "b-home-4",
+          "type": "paragraph",
+          "content": "This is a personal knowledge base built and owned entirely by Akhil Antony Joseph. It was created because every popular note-taking or wiki tool either sends your data to the cloud, requires a subscription, or locks you into a proprietary format. This book is different \u2014 it is a single JSON file that you fully control, rendered beautifully in the browser."
+        },
+        {
+          "id": "b-home-5",
+          "type": "heading2",
+          "content": "Why This Exists"
+        },
+        {
+          "id": "b-home-6",
+          "type": "bulletList",
+          "items": [
+            {
+              "id": "li-1",
+              "text": "Privacy first \u2014 your notes never leave your device"
+            },
+            {
+              "id": "li-2",
+              "text": "No subscriptions, no logins, no tracking"
+            },
+            {
+              "id": "li-3",
+              "text": "Portable \u2014 one JSON file is your entire brain dump"
+            },
+            {
+              "id": "li-4",
+              "text": "Offline \u2014 works without any internet connection"
+            },
+            {
+              "id": "li-5",
+              "text": "Open \u2014 the data format is plain JSON you can read, migrate, or back up anywhere"
+            }
+          ]
+        },
+        {
+          "id": "b-home-7",
+          "type": "heading2",
+          "content": "How to Use"
+        },
+        {
+          "id": "b-home-8",
+          "type": "numberedList",
+          "items": [
+            {
+              "id": "nl-1",
+              "text": "Use the sidebar on the left to navigate between pages"
+            },
+            {
+              "id": "nl-2",
+              "text": "Click + next to any section to create a new page or sub-page"
+            },
+            {
+              "id": "nl-3",
+              "text": "Click anywhere on a block to start editing"
+            },
+            {
+              "id": "nl-4",
+              "text": "Type / on a new line to open the block picker and insert any block type"
+            },
+            {
+              "id": "nl-5",
+              "text": "Use \u2318K (or Ctrl+K) to open global search across all your pages"
+            },
+            {
+              "id": "nl-6",
+              "text": "Hit Save in the top-right to download an updated data.json to your machine"
+            },
+            {
+              "id": "nl-7",
+              "text": "Hit Load to restore a previously saved data.json"
+            }
+          ]
+        },
+        {
+          "id": "b-home-9",
+          "type": "divider"
+        },
+        {
+          "id": "b-home-10",
+          "type": "paragraph",
+          "content": "Start exploring the sections in the sidebar. This book is yours \u2014 make it messy, make it detailed, make it yours."
+        }
+      ]
+    },
+    {
+      "id": "page-about",
+      "title": "About Me",
+      "icon": "person",
+      "parentId": null,
+      "order": 1,
+      "createdAt": "2025-01-01T00:00:00Z",
+      "updatedAt": "2025-04-03T00:00:00Z",
+      "blocks": [
+        {
+          "id": "b-a1",
+          "type": "heading1",
+          "content": "Akhil Antony Joseph"
+        },
+        {
+          "id": "b-a2",
+          "type": "callout",
+          "content": "\ud83d\udca1 This page is your personal intro \u2014 update it whenever your life changes. Think of it as your living r\u00e9sum\u00e9, only for yourself.",
+          "variant": "info"
+        },
+        {
+          "id": "b-a3",
+          "type": "heading2",
+          "content": "Quick Profile"
+        },
+        {
+          "id": "b-a4",
+          "type": "table",
+          "content": "",
+          "tableData": {
+            "headers": [
+              "Field",
+              "Details"
+            ],
+            "rows": [
+              [
+                "Full Name",
+                "Akhil Antony Joseph"
+              ],
+              [
+                "Also Known As",
+                "Akhil Antony Joseph Rio"
+              ],
+              [
+                "Role",
+                "Software Developer / Builder"
+              ],
+              [
+                "Built This App",
+                "HushNotes \u2014 personal digital book"
+              ],
+              [
+                "Philosophy",
+                "Privacy-first, locally-owned tools"
+              ],
+              [
+                "Timezone",
+                "Add your timezone here"
+              ],
+              [
+                "Contact",
+                "Add your preferred contact here"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "b-a5",
+          "type": "heading2",
+          "content": "About Me"
+        },
+        {
+          "id": "b-a6",
+          "type": "paragraph",
+          "content": "I am a developer who believes that the tools you use daily should serve you \u2014 not harvest you. I built HushNotes because I wanted a private, local-first knowledge base that I could trust completely. No cloud sync, no third-party servers, no vendor lock-in. Just me and my notes."
+        },
+        {
+          "id": "b-a7",
+          "type": "heading2",
+          "content": "Values & Principles"
+        },
+        {
+          "id": "b-a8",
+          "type": "bulletList",
+          "items": [
+            {
+              "id": "v1",
+              "text": "Privacy is not a feature \u2014 it is a right"
+            },
+            {
+              "id": "v2",
+              "text": "Own your data, own your thinking"
+            },
+            {
+              "id": "v3",
+              "text": "Simple tools, deeply used, beat complex tools barely understood"
+            },
+            {
+              "id": "v4",
+              "text": "Write things down \u2014 memory is unreliable, JSON is not"
+            },
+            {
+              "id": "v5",
+              "text": "Build for yourself first; if others find it useful, that is a bonus"
+            }
+          ]
+        },
+        {
+          "id": "b-a9",
+          "type": "heading2",
+          "content": "A Note to Future Me"
+        },
+        {
+          "id": "b-a10",
+          "type": "quote",
+          "content": "The palest ink is better than the best memory. Write it down. Save it. Own it."
+        }
+      ]
+    },
+    {
+      "id": "page-app-guide",
+      "title": "App Feature Guide",
+      "icon": "menu_book",
+      "parentId": null,
+      "order": 2,
+      "createdAt": "2025-01-01T00:00:00Z",
+      "updatedAt": "2025-04-03T00:00:00Z",
+      "blocks": [
+        {
+          "id": "b-g1",
+          "type": "heading1",
+          "content": "HushNotes \u2014 Complete Feature Guide"
+        },
+        {
+          "id": "b-g2",
+          "type": "paragraph",
+          "content": "This page documents every feature of HushNotes so you never have to guess what the app can do."
+        },
+        {
+          "id": "b-g3",
+          "type": "heading2",
+          "content": "Block Types"
+        },
+        {
+          "id": "b-g4",
+          "type": "table",
+          "content": "",
+          "tableData": {
+            "headers": [
+              "Block Type",
+              "Trigger",
+              "Description"
+            ],
+            "rows": [
+              [
+                "Heading 1",
+                "/heading1 or H1 in block menu",
+                "Large page title or major section"
+              ],
+              [
+                "Heading 2",
+                "/heading2 or H2",
+                "Medium sub-section heading"
+              ],
+              [
+                "Heading 3",
+                "/heading3 or H3",
+                "Small inline section label"
+              ],
+              [
+                "Paragraph",
+                "/paragraph",
+                "Standard body text"
+              ],
+              [
+                "Bullet List",
+                "/bulletList",
+                "Unordered list with items"
+              ],
+              [
+                "Numbered List",
+                "/numberedList",
+                "Ordered step-by-step list"
+              ],
+              [
+                "Checklist",
+                "/checklist",
+                "Task list with checkboxes"
+              ],
+              [
+                "Toggle",
+                "/toggle",
+                "Collapsible section \u2014 great for FAQs"
+              ],
+              [
+                "Quote",
+                "/quote",
+                "Highlighted block quotation"
+              ],
+              [
+                "Code Block",
+                "/code",
+                "Monospaced code with language support"
+              ],
+              [
+                "Callout",
+                "/callout",
+                "Info, warning, or tip box with variants"
+              ],
+              [
+                "Table",
+                "/table",
+                "Structured data with headers and rows"
+              ],
+              [
+                "Image",
+                "/image",
+                "Embed image by URL with optional caption"
+              ],
+              [
+                "Video",
+                "/video",
+                "Embed video by URL"
+              ],
+              [
+                "Divider",
+                "/divider",
+                "Horizontal separator line"
+              ],
+              [
+                "Two Columns",
+                "/columns",
+                "Side-by-side two-column layout"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "b-g5",
+          "type": "heading2",
+          "content": "Header Bar Actions"
+        },
+        {
+          "id": "b-g6",
+          "type": "table",
+          "content": "",
+          "tableData": {
+            "headers": [
+              "Button",
+              "What It Does"
+            ],
+            "rows": [
+              [
+                "\u2630 Hamburger",
+                "Show or hide the left sidebar"
+              ],
+              [
+                "App Name (\u25c8 HushNotes)",
+                "Click to rename your book \u2014 it changes the app title"
+              ],
+              [
+                "\ud83d\udd0d Search bar (\u2318K)",
+                "Global full-text search across all pages and block content"
+              ],
+              [
+                "\u2b06 Load",
+                "Load a previously saved data.json file into the app"
+              ],
+              [
+                "\ud83d\udd12 Lock / Unlock",
+                "Lock editing to read-only mode \u2014 prevents accidental edits"
+              ],
+              [
+                "\ud83d\udcbe Save",
+                "Download the current state as a fresh data.json to your machine"
+              ],
+              [
+                "\ud83c\udf19 / \u2600\ufe0f Theme toggle",
+                "Switch between dark and light mode"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "b-g7",
+          "type": "heading2",
+          "content": "Sidebar Actions"
+        },
+        {
+          "id": "b-g8",
+          "type": "bulletList",
+          "items": [
+            {
+              "id": "sb1",
+              "text": "+ button \u2014 Create a new root-level page"
+            },
+            {
+              "id": "sb2",
+              "text": "+ next to a page \u2014 Create a child sub-page nested under it"
+            },
+            {
+              "id": "sb3",
+              "text": "\u25b8 Expand arrow \u2014 Expand or collapse a page with sub-pages"
+            },
+            {
+              "id": "sb4",
+              "text": "Right-click or hover menu \u2014 Rename, duplicate, or delete a page"
+            },
+            {
+              "id": "sb5",
+              "text": "Click a page \u2014 Open and display it in the editor"
+            }
+          ]
+        },
+        {
+          "id": "b-g9",
+          "type": "heading2",
+          "content": "Editor Interactions"
+        },
+        {
+          "id": "b-g10",
+          "type": "bulletList",
+          "items": [
+            {
+              "id": "ed1",
+              "text": "Click the page title at the top to rename it inline"
+            },
+            {
+              "id": "ed2",
+              "text": "Click any block to start editing its content"
+            },
+            {
+              "id": "ed3",
+              "text": "Type / on an empty new line to open the block type picker"
+            },
+            {
+              "id": "ed4",
+              "text": "Hover a block to reveal the drag handle (\u283f) and block toolbar"
+            },
+            {
+              "id": "ed5",
+              "text": "Drag blocks by the \u283f handle to reorder them"
+            },
+            {
+              "id": "ed6",
+              "text": "Block toolbar lets you change block type, add above, add below, or delete"
+            },
+            {
+              "id": "ed7",
+              "text": "Press Enter at the end of a block to create a new paragraph below"
+            },
+            {
+              "id": "ed8",
+              "text": "Smart paste \u2014 pasting Markdown-formatted text auto-converts to the matching block type"
+            }
+          ]
+        },
+        {
+          "id": "b-g11",
+          "type": "heading2",
+          "content": "Callout Variants"
+        },
+        {
+          "id": "b-g12",
+          "type": "callout",
+          "content": "\u2139\ufe0f This is an info callout \u2014 use it for tips and helpful notes.",
+          "variant": "info"
+        },
+        {
+          "id": "b-g13",
+          "type": "callout",
+          "content": "\u26a0\ufe0f This is a warning callout \u2014 use it for important cautions.",
+          "variant": "warning"
+        },
+        {
+          "id": "b-g14",
+          "type": "callout",
+          "content": "\u2705 This is a success callout \u2014 use it for completed items or confirmations.",
+          "variant": "success"
+        },
+        {
+          "id": "b-g15",
+          "type": "heading2",
+          "content": "Data Flow \u2014 How Saving Works"
+        },
+        {
+          "id": "b-g16",
+          "type": "numberedList",
+          "items": [
+            {
+              "id": "df1",
+              "text": "App loads data.json from the /public folder on startup"
+            },
+            {
+              "id": "df2",
+              "text": "All edits are held in memory (React state) \u2014 nothing is auto-saved to disk"
+            },
+            {
+              "id": "df3",
+              "text": "When you click Save, the current state is serialised to JSON and downloaded to your machine"
+            },
+            {
+              "id": "df4",
+              "text": "Replace the data.json in /public with the downloaded file to make edits permanent"
+            },
+            {
+              "id": "df5",
+              "text": "Use Load to swap in any previously saved data.json without restarting the app"
+            }
+          ]
+        },
+        {
+          "id": "b-g17",
+          "type": "callout",
+          "content": "\ud83d\udd10 Zero cloud. Zero accounts. Zero tracking. Your data never touches the internet unless you choose to put it there.",
+          "variant": "success"
+        }
+      ]
+    },
+    {
+      "id": "page-notes",
+      "title": "Notes",
+      "icon": "edit_note",
+      "parentId": null,
+      "order": 3,
+      "createdAt": "2025-01-01T00:00:00Z",
+      "updatedAt": "2025-04-03T00:00:00Z",
+      "blocks": [
+        {
+          "id": "b-n1",
+          "type": "heading1",
+          "content": "Notes"
+        },
+        {
+          "id": "b-n2",
+          "type": "paragraph",
+          "content": "Use this section for quick notes, ideas, and thoughts. Create sub-pages to organise by topic, project, or date."
+        },
+        {
+          "id": "b-n3",
+          "type": "callout",
+          "content": "\ud83d\udca1 Tip: Create sub-pages under Notes for different topics \u2014 e.g. 'Work Notes', 'Personal', 'Reading Notes', 'Meeting Summaries'.",
+          "variant": "info"
+        }
+      ]
+    },
+    {
+      "id": "page-journal",
+      "title": "Journal",
+      "icon": "import_contacts",
+      "parentId": null,
+      "order": 4,
+      "createdAt": "2025-01-01T00:00:00Z",
+      "updatedAt": "2025-04-03T00:00:00Z",
+      "blocks": [
+        {
+          "id": "b-j1",
+          "type": "heading1",
+          "content": "Journal"
+        },
+        {
+          "id": "b-j2",
+          "type": "paragraph",
+          "content": "A private, local journal. Create a new sub-page for each entry \u2014 name them by date for easy browsing (e.g. 2025-04-03)."
+        },
+        {
+          "id": "b-j3",
+          "type": "callout",
+          "content": "\ud83d\udd12 This journal never leaves your machine. Write freely.",
+          "variant": "info"
+        },
+        {
+          "id": "b-j4",
+          "type": "heading2",
+          "content": "Example Entry \u2014 2025-04-03"
+        },
+        {
+          "id": "b-j5",
+          "type": "paragraph",
+          "content": "Today I set up my personal digital book. Everything is local. Finally a system I trust completely."
+        },
+        {
+          "id": "b-j6",
+          "type": "quote",
+          "content": "A journal is a tool for thinking, not just recording."
+        }
+      ]
+    },
+    {
+      "id": "page-journal-2025-04-03",
+      "title": "2025-04-03",
+      "icon": "calendar_today",
+      "parentId": "page-journal",
+      "order": 0,
+      "createdAt": "2025-04-03T00:00:00Z",
+      "updatedAt": "2025-04-03T00:00:00Z",
+      "blocks": [
+        {
+          "id": "b-jd1",
+          "type": "heading1",
+          "content": "Journal \u2014 3 April 2025"
+        },
+        {
+          "id": "b-jd2",
+          "type": "paragraph",
+          "content": "Write your thoughts for today here. Delete this placeholder and make it yours."
+        },
+        {
+          "id": "b-jd3",
+          "type": "checklist",
+          "items": [
+            {
+              "id": "cl1",
+              "text": "Set up HushNotes",
+              "checked": true
+            },
+            {
+              "id": "cl2",
+              "text": "Add first journal entry",
+              "checked": false
+            },
+            {
+              "id": "cl3",
+              "text": "Organise existing notes",
+              "checked": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "page-projects",
+      "title": "Projects",
+      "icon": "rocket_launch",
+      "parentId": null,
+      "order": 5,
+      "createdAt": "2025-01-01T00:00:00Z",
+      "updatedAt": "2025-04-03T00:00:00Z",
+      "blocks": [
+        {
+          "id": "b-p1",
+          "type": "heading1",
+          "content": "Projects"
+        },
+        {
+          "id": "b-p2",
+          "type": "paragraph",
+          "content": "Track personal and professional projects here. Give each project its own sub-page with goals, tasks, notes, and links."
+        },
+        {
+          "id": "b-p3",
+          "type": "table",
+          "content": "",
+          "tableData": {
+            "headers": [
+              "Project",
+              "Status",
+              "Priority",
+              "Notes"
+            ],
+            "rows": [
+              [
+                "HushNotes",
+                "\u2705 Complete",
+                "High",
+                "Personal local wiki app \u2014 shipped!"
+              ],
+              [
+                "Add your next project",
+                "\ud83d\udd04 In Progress",
+                "Medium",
+                "Add details here"
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "page-HushNotes-project",
+      "title": "HushNotes",
+      "icon": "auto_stories",
+      "parentId": "page-projects",
+      "order": 0,
+      "createdAt": "2025-01-01T00:00:00Z",
+      "updatedAt": "2025-04-03T00:00:00Z",
+      "blocks": [
+        {
+          "id": "b-ws1",
+          "type": "heading1",
+          "content": "HushNotes \u2014 Project Log"
+        },
+        {
+          "id": "b-ws2",
+          "type": "callout",
+          "content": "\ud83c\udf89 This is the project that created the very app you are reading this in.",
+          "variant": "success"
+        },
+        {
+          "id": "b-ws3",
+          "type": "heading2",
+          "content": "Why I Built This"
+        },
+        {
+          "id": "b-ws4",
+          "type": "paragraph",
+          "content": "Every note-taking app I tried \u2014 Notion, Obsidian cloud sync, Confluence \u2014 had the same problem: my data lived somewhere I did not fully control. I wanted something that felt like Notion but worked like a local file. So I built HushNotes: a React app that reads and writes a single JSON file, runs entirely in the browser, and never phones home."
+        },
+        {
+          "id": "b-ws5",
+          "type": "heading2",
+          "content": "Tech Stack"
+        },
+        {
+          "id": "b-ws6",
+          "type": "table",
+          "content": "",
+          "tableData": {
+            "headers": [
+              "Layer",
+              "Technology"
+            ],
+            "rows": [
+              [
+                "Frontend",
+                "React (Create React App)"
+              ],
+              [
+                "State",
+                "useState / useCallback / useRef hooks"
+              ],
+              [
+                "IDs",
+                "uuid (v4)"
+              ],
+              [
+                "Styling",
+                "Custom CSS with CSS variables for theming"
+              ],
+              [
+                "Data persistence",
+                "Local JSON file \u2014 no database, no backend"
+              ],
+              [
+                "Search",
+                "In-memory full-text search across all blocks"
+              ],
+              [
+                "Drag & Drop",
+                "HTML5 drag events, custom implementation"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "b-ws7",
+          "type": "heading2",
+          "content": "Key Design Decisions"
+        },
+        {
+          "id": "b-ws8",
+          "type": "bulletList",
+          "items": [
+            {
+              "id": "kd1",
+              "text": "Block-based editor \u2014 every piece of content is a typed block, making the format extensible"
+            },
+            {
+              "id": "kd2",
+              "text": "Single JSON file \u2014 the entire knowledge base is one portable file you can version-control or back up to a USB drive"
+            },
+            {
+              "id": "kd3",
+              "text": "No auto-save \u2014 deliberate save-on-demand so you control when data.json changes"
+            },
+            {
+              "id": "kd4",
+              "text": "Lock mode \u2014 toggle read-only so you can browse without accidentally editing"
+            },
+            {
+              "id": "kd5",
+              "text": "Dark/Light theme \u2014 CSS variable system makes theming trivial"
+            },
+            {
+              "id": "kd6",
+              "text": "Infinite page nesting \u2014 sidebar supports arbitrary depth via parentId references"
+            }
+          ]
+        },
+        {
+          "id": "b-ws9",
+          "type": "heading2",
+          "content": "Shipped Features"
+        },
+        {
+          "id": "b-ws10",
+          "type": "checklist",
+          "items": [
+            {
+              "id": "sf1",
+              "text": "16 block types",
+              "checked": true
+            },
+            {
+              "id": "sf2",
+              "text": "Infinite nested page hierarchy",
+              "checked": true
+            },
+            {
+              "id": "sf3",
+              "text": "Global full-text search (\u2318K)",
+              "checked": true
+            },
+            {
+              "id": "sf4",
+              "text": "Dark / light theme toggle",
+              "checked": true
+            },
+            {
+              "id": "sf5",
+              "text": "Drag-and-drop block reordering",
+              "checked": true
+            },
+            {
+              "id": "sf6",
+              "text": "Page emoji icons",
+              "checked": true
+            },
+            {
+              "id": "sf7",
+              "text": "Duplicate page",
+              "checked": true
+            },
+            {
+              "id": "sf8",
+              "text": "Lock / read-only mode",
+              "checked": true
+            },
+            {
+              "id": "sf9",
+              "text": "Load & Save JSON",
+              "checked": true
+            },
+            {
+              "id": "sf10",
+              "text": "Inline app name editing",
+              "checked": true
+            },
+            {
+              "id": "sf11",
+              "text": "Smart paste \u2014 Markdown auto-conversion",
+              "checked": true
+            },
+            {
+              "id": "sf12",
+              "text": "Collapsible sidebar",
+              "checked": true
+            }
+          ]
+        },
+        {
+          "id": "b-ws11",
+          "type": "heading2",
+          "content": "Ideas for Future"
+        },
+        {
+          "id": "b-ws12",
+          "type": "checklist",
+          "items": [
+            {
+              "id": "if1",
+              "text": "Auto-save on change with debounce",
+              "checked": false
+            },
+            {
+              "id": "if2",
+              "text": "Local file system access via File System Access API",
+              "checked": false
+            },
+            {
+              "id": "if3",
+              "text": "PDF export",
+              "checked": false
+            },
+            {
+              "id": "if4",
+              "text": "Tags and filtering",
+              "checked": false
+            },
+            {
+              "id": "if5",
+              "text": "Backlinks between pages",
+              "checked": false
+            }
+          ]
+        },
+        {
+          "id": "b-ws13",
+          "type": "divider"
+        },
+        {
+          "id": "b-ws14",
+          "type": "quote",
+          "content": "Built by Akhil Antony Joseph \u2014 because good tools should be yours, fully."
+        }
+      ]
+    },
+    {
+      "id": "page-reading",
+      "title": "Reading List",
+      "icon": "local_library",
+      "parentId": null,
+      "order": 6,
+      "createdAt": "2025-01-01T00:00:00Z",
+      "updatedAt": "2025-04-03T00:00:00Z",
+      "blocks": [
+        {
+          "id": "b-r1",
+          "type": "heading1",
+          "content": "Reading List"
+        },
+        {
+          "id": "b-r2",
+          "type": "paragraph",
+          "content": "Books, articles, and resources worth tracking. Add a sub-page for detailed notes on any book."
+        },
+        {
+          "id": "b-r3",
+          "type": "heading2",
+          "content": "Books"
+        },
+        {
+          "id": "b-r4",
+          "type": "table",
+          "content": "",
+          "tableData": {
+            "headers": [
+              "Title",
+              "Author",
+              "Status",
+              "Rating"
+            ],
+            "rows": [
+              [
+                "Add a book title",
+                "Author name",
+                "\ud83d\udcd6 Reading",
+                "\u2014"
+              ],
+              [
+                "Add another book",
+                "Author name",
+                "\ud83d\udd1c Want to read",
+                "\u2014"
+              ],
+              [
+                "A finished book",
+                "Author name",
+                "\u2705 Done",
+                "\u2b50\u2b50\u2b50\u2b50\u2b50"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "b-r5",
+          "type": "heading2",
+          "content": "Articles & Links"
+        },
+        {
+          "id": "b-r6",
+          "type": "bulletList",
+          "items": [
+            {
+              "id": "al1",
+              "text": "Paste article URLs or titles here to keep track of things worth reading"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "page-snippets",
+      "title": "Code Snippets",
+      "icon": "code",
+      "parentId": null,
+      "order": 7,
+      "createdAt": "2025-01-01T00:00:00Z",
+      "updatedAt": "2025-04-03T00:00:00Z",
+      "blocks": [
+        {
+          "id": "b-cs1",
+          "type": "heading1",
+          "content": "Code Snippets"
+        },
+        {
+          "id": "b-cs2",
+          "type": "paragraph",
+          "content": "A private library of useful code snippets. Create sub-pages per language or topic."
+        },
+        {
+          "id": "b-cs3",
+          "type": "heading2",
+          "content": "Example \u2014 JavaScript"
+        },
+        {
+          "id": "b-cs4",
+          "type": "code",
+          "content": "// Debounce utility\nfunction debounce(fn, delay) {\n  let timer;\n  return (...args) => {\n    clearTimeout(timer);\n    timer = setTimeout(() => fn(...args), delay);\n  };\n}\n\n// Deep clone without JSON stringify gotchas\nconst deepClone = (obj) => structuredClone(obj);",
+          "language": "javascript"
+        },
+        {
+          "id": "b-cs5",
+          "type": "heading2",
+          "content": "Example \u2014 Shell"
+        },
+        {
+          "id": "b-cs6",
+          "type": "code",
+          "content": "# Find and kill process on a port\nlsof -ti:3000 | xargs kill -9\n\n# Recursively find large files\nfind . -type f -size +100M | sort -rh | head -20",
+          "language": "bash"
+        },
+        {
+          "id": "b-cs7",
+          "type": "callout",
+          "content": "\ud83d\udca1 Use sub-pages to organise by language: JavaScript, Python, SQL, Bash, etc.",
+          "variant": "info"
+        }
+      ]
+    }
+  ]
+}
