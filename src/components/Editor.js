@@ -65,6 +65,12 @@ const BLOCK_TYPES = [
     icon: "⊟",
     desc: "Two-column layout",
   },
+  {
+    type: "flowchart",
+    label: "Flowchart",
+    icon: "⬡",
+    desc: "Interactive diagram / flowchart",
+  },
 ];
 
 // function BlockMenu({ position, onSelect, onClose }) {
@@ -687,6 +693,8 @@ function createEmptyBlock(type) {
           },
         ],
       };
+    case "flowchart":
+      return { ...base, flowchart: { nodes: [], edges: [] } };
     case "checklist":
       return { ...base, items: [{ id: uuidv4(), text: "", checked: false }] };
     case "bulletList":

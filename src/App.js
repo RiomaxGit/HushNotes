@@ -5,8 +5,8 @@ import Editor from "./components/Editor";
 import "./styles.css";
 
 const DEFAULT_DATA_PATH = "/data.json";
+const MAX_HISTORY = 50;
 
-// Extract all text from a block for search indexing
 function extractBlockText(block) {
   if (!block) return "";
   const parts = [];
@@ -33,7 +33,6 @@ function GlobalSearch({ pages, onSelectPage, onClose }) {
   const [query, setQuery] = useState("");
   const inputRef = useRef(null);
   const ref = useRef(null);
-
   useEffect(() => {
     inputRef.current?.focus();
     const handler = (e) => {
@@ -47,17 +46,15 @@ function GlobalSearch({ pages, onSelectPage, onClose }) {
       document.removeEventListener("mousedown", handler);
     };
   }, [onClose]);
-
   const q = query.trim().toLowerCase();
   const results =
     q.length < 2
       ? []
       : pages.flatMap((page) => {
           const titleMatch = page.title.toLowerCase().includes(q);
-          const matchingBlocks = (page.blocks || []).filter((b) => {
-            const text = extractBlockText(b).toLowerCase();
-            return text.includes(q);
-          });
+          const matchingBlocks = (page.blocks || []).filter((b) =>
+            extractBlockText(b).toLowerCase().includes(q)
+          );
           if (!titleMatch && matchingBlocks.length === 0) return [];
           return [
             {
@@ -73,7 +70,6 @@ function GlobalSearch({ pages, onSelectPage, onClose }) {
             },
           ];
         });
-
   function highlight(text, q) {
     if (!q) return text;
     const idx = text.toLowerCase().indexOf(q);
@@ -86,7 +82,6 @@ function GlobalSearch({ pages, onSelectPage, onClose }) {
       </>
     );
   }
-
   return (
     <div className="global-search-overlay">
       <div className="global-search-modal" ref={ref}>
@@ -127,7 +122,7 @@ function GlobalSearch({ pages, onSelectPage, onClose }) {
               No results for "<strong>{query}</strong>"
             </div>
           ) : (
-            results.map(({ page, titleMatch, snippets }) => (
+            results.map(({ page, snippets }) => (
               <button
                 key={page.id}
                 className="search-result-item"
@@ -158,6 +153,188 @@ function GlobalSearch({ pages, onSelectPage, onClose }) {
   );
 }
 
+function LoadSourceDialog({ onLoadLocal, onLoadFromLink, onClose }) {
+  const [linkVal, setLinkVal] = useState("");
+  const [mode, setMode] = useState("choose");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const ref = useRef(null);
+  useEffect(() => {
+    const handler = (e) => {
+      if (e.key === "Escape") onClose();
+      if (ref.current && !ref.current.contains(e.target)) onClose();
+    };
+    document.addEventListener("keydown", handler);
+    document.addEventListener("mousedown", handler);
+    return () => {
+      document.removeEventListener("keydown", handler);
+      document.removeEventListener("mousedown", handler);
+    };
+  }, [onClose]);
+  const handleLink = async () => {
+    if (!linkVal.trim()) return;
+    setLoading(true);
+    setError("");
+    try {
+      const res = await fetch(linkVal.trim());
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const json = await res.json();
+      onLoadFromLink(json);
+      onClose();
+    } catch (e) {
+      setError("Failed to load: " + e.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+  return (
+    <div className="modal-overlay">
+      <div className="modal-dialog load-dialog" ref={ref}>
+        <div className="modal-header">
+          <h3>Load Data</h3>
+          <button className="modal-close" onClick={onClose}>
+            ✕
+          </button>
+        </div>
+        {mode === "choose" && (
+          <div className="load-choice-btns">
+            <button className="load-choice-btn" onClick={onLoadLocal}>
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <path d="M9 9h6M9 13h4" />
+              </svg>
+              <span>Load from Local</span>
+              <small>Pick a JSON file from your device</small>
+            </button>
+            <button className="load-choice-btn" onClick={() => setMode("link")}>
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+              >
+                <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71" />
+                <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71" />
+              </svg>
+              <span>Load from Link</span>
+              <small>Fetch JSON from a URL (npoint, etc.)</small>
+            </button>
+          </div>
+        )}
+        {mode === "link" && (
+          <div className="load-link-form">
+            <button className="back-btn" onClick={() => setMode("choose")}>
+              ← Back
+            </button>
+            <label>JSON URL</label>
+            <input
+              className="link-url-input"
+              type="url"
+              placeholder="https://api.npoint.io/..."
+              value={linkVal}
+              onChange={(e) => setLinkVal(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && handleLink()}
+              autoFocus
+            />
+            {error && <div className="load-error">{error}</div>}
+            <button
+              className="load-link-btn"
+              onClick={handleLink}
+              disabled={loading || !linkVal.trim()}
+            >
+              {loading ? "Loading…" : "Load"}
+            </button>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function UnsavedChangesDialog({ onSave, onDiscard, onCancel }) {
+  return (
+    <div className="modal-overlay">
+      <div className="modal-dialog unsaved-dialog">
+        <div className="unsaved-icon">⚠️</div>
+        <h3>Unsaved Changes</h3>
+        <p>You have unsaved changes. What would you like to do?</p>
+        <div className="unsaved-actions">
+          <button className="btn-primary" onClick={onSave}>
+            Save & Continue
+          </button>
+          <button className="btn-danger" onClick={onDiscard}>
+            Discard Changes
+          </button>
+          <button className="btn-ghost" onClick={onCancel}>
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function HistoryPanel({ history, currentIdx, onRevert, onClose }) {
+  return (
+    <div className="history-panel-overlay">
+      <div className="history-panel">
+        <div className="history-panel-header">
+          <h3>Edit History</h3>
+          <button className="modal-close" onClick={onClose}>
+            ✕
+          </button>
+        </div>
+        <div className="history-list">
+          {history.length === 0 && (
+            <div className="history-empty">No history yet</div>
+          )}
+          {[...history].reverse().map((entry, revIdx) => {
+            const idx = history.length - 1 - revIdx;
+            const isCurrent = idx === currentIdx;
+            return (
+              <div
+                key={entry.timestamp}
+                className={`history-entry${
+                  isCurrent ? " history-current" : ""
+                }`}
+              >
+                <div className="history-entry-info">
+                  <span className="history-time">
+                    {new Date(entry.timestamp).toLocaleTimeString([], {
+                      hour: "2-digit",
+                      minute: "2-digit",
+                      second: "2-digit",
+                    })}
+                  </span>
+                  <span className="history-desc">{entry.description}</span>
+                  {isCurrent && <span className="history-badge">Current</span>}
+                </div>
+                {!isCurrent && (
+                  <button
+                    className="history-revert-btn"
+                    onClick={() => onRevert(idx)}
+                  >
+                    Revert
+                  </button>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function App() {
   const [theme, setTheme] = useState("light");
   const [data, setData] = useState({ appName: "HushNotes", pages: [] });
@@ -168,12 +345,47 @@ export default function App() {
   const [sidebarOpen, setSidebarOpen] = useState(!isMobile());
   const [isLocked, setIsLocked] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
+  const [showLoadDialog, setShowLoadDialog] = useState(false);
+  const [showUnsaved, setShowUnsaved] = useState(false);
+  const [showHistory, setShowHistory] = useState(false);
+  const [pendingLoadAction, setPendingLoadAction] = useState(null);
   const fileInputRef = useRef(null);
+  const [savedData, setSavedData] = useState(null);
+  const [history, setHistory] = useState([]);
+  const [historyIdx, setHistoryIdx] = useState(-1);
+  const historyIdxRef = useRef(-1);
+
+  const hasUnsavedChanges =
+    savedData !== null && JSON.stringify(data) !== savedData;
+
+  const pushHistory = useCallback((newData, description) => {
+    const entry = {
+      data: JSON.parse(JSON.stringify(newData)),
+      timestamp: Date.now(),
+      description,
+    };
+    setHistory((prev) => {
+      const trimmed = prev.slice(0, historyIdxRef.current + 1);
+      const next = [...trimmed, entry].slice(-MAX_HISTORY);
+      historyIdxRef.current = next.length - 1;
+      setHistoryIdx(next.length - 1);
+      return next;
+    });
+  }, []);
 
   useEffect(() => {
     const loadData = (d) => {
       setData(d);
+      setSavedData(JSON.stringify(d));
       if (d.pages && d.pages.length > 0) setSelectedPageId(d.pages[0].id);
+      const entry = {
+        data: JSON.parse(JSON.stringify(d)),
+        timestamp: Date.now(),
+        description: "Initial load",
+      };
+      setHistory([entry]);
+      historyIdxRef.current = 0;
+      setHistoryIdx(0);
     };
     if (window.__WIKI_DATA__) {
       loadData(window.__WIKI_DATA__);
@@ -183,11 +395,23 @@ export default function App() {
       .then((r) => r.json())
       .then(loadData)
       .catch(() => {
-        setData({ appName: "HushNotes", pages: [] });
+        const empty = { appName: "HushNotes", pages: [] };
+        setData(empty);
+        setSavedData(JSON.stringify(empty));
       });
-  }, []);
+  }, []); // eslint-disable-line
 
-  // Global keyboard shortcut: Cmd/Ctrl+K for search
+  useEffect(() => {
+    const handler = (e) => {
+      if (hasUnsavedChanges) {
+        e.preventDefault();
+        e.returnValue = "";
+      }
+    };
+    window.addEventListener("beforeunload", handler);
+    return () => window.removeEventListener("beforeunload", handler);
+  }, [hasUnsavedChanges]);
+
   useEffect(() => {
     const handler = (e) => {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
@@ -223,11 +447,15 @@ export default function App() {
           { id: uuidv4(), type: "paragraph", content: "" },
         ],
       };
-      setData((prev) => ({ ...prev, pages: [...prev.pages, newPage] }));
+      setData((prev) => {
+        const next = { ...prev, pages: [...prev.pages, newPage] };
+        pushHistory(next, `Created page "${newPage.title}"`);
+        return next;
+      });
       setSelectedPageId(newPage.id);
       if (parentId) setExpandedPages((prev) => ({ ...prev, [parentId]: true }));
     },
-    [data.pages]
+    [data.pages, pushHistory]
   );
 
   const deletePage = useCallback(
@@ -240,16 +468,21 @@ export default function App() {
         );
       };
       const toDelete = [pageId, ...getAllDescendants(pageId)];
-      setData((prev) => ({
-        ...prev,
-        pages: prev.pages.filter((p) => !toDelete.includes(p.id)),
-      }));
+      const pg = data.pages.find((p) => p.id === pageId);
+      setData((prev) => {
+        const next = {
+          ...prev,
+          pages: prev.pages.filter((p) => !toDelete.includes(p.id)),
+        };
+        pushHistory(next, `Deleted "${pg?.title || pageId}"`);
+        return next;
+      });
       if (toDelete.includes(selectedPageId)) {
         const remaining = data.pages.filter((p) => !toDelete.includes(p.id));
         setSelectedPageId(remaining.length > 0 ? remaining[0].id : null);
       }
     },
-    [data.pages, selectedPageId]
+    [data.pages, selectedPageId, pushHistory]
   );
 
   const updatePage = useCallback((pageId, updates) => {
@@ -263,6 +496,30 @@ export default function App() {
     }));
   }, []);
 
+  const historyDebounceRef = useRef(null);
+  const updatePageDebounced = useCallback(
+    (pageId, updates) => {
+      setData((prev) => {
+        const pg = prev.pages.find((p) => p.id === pageId);
+        const next = {
+          ...prev,
+          pages: prev.pages.map((p) =>
+            p.id === pageId
+              ? { ...p, ...updates, updatedAt: new Date().toISOString() }
+              : p
+          ),
+        };
+        clearTimeout(historyDebounceRef.current);
+        historyDebounceRef.current = setTimeout(
+          () => pushHistory(next, `Edited "${pg?.title || pageId}"`),
+          1500
+        );
+        return next;
+      });
+    },
+    [pushHistory]
+  );
+
   const duplicatePage = useCallback(
     (pageId) => {
       const page = data.pages.find((p) => p.id === pageId);
@@ -274,10 +531,14 @@ export default function App() {
         order: page.order + 0.5,
         blocks: page.blocks.map((b) => ({ ...b, id: uuidv4() })),
       };
-      setData((prev) => ({ ...prev, pages: [...prev.pages, newPage] }));
+      setData((prev) => {
+        const next = { ...prev, pages: [...prev.pages, newPage] };
+        pushHistory(next, `Duplicated "${page.title}"`);
+        return next;
+      });
       setSelectedPageId(newPage.id);
     },
-    [data.pages]
+    [data.pages, pushHistory]
   );
 
   const saveData = () => {
@@ -289,9 +550,15 @@ export default function App() {
     a.download = `${data.appName.replace(/\s+/g, "-").toLowerCase()}-data.json`;
     a.click();
     URL.revokeObjectURL(url);
+    setSavedData(json);
   };
 
-  const loadData = (e) => {
+  const doLoadLocal = () => {
+    fileInputRef.current.click();
+    setShowLoadDialog(false);
+  };
+
+  const handleFileLoad = (e) => {
     const file = e.target.files[0];
     if (!file) return;
     const reader = new FileReader();
@@ -299,14 +566,55 @@ export default function App() {
       try {
         const parsed = JSON.parse(ev.target.result);
         setData(parsed);
+        setSavedData(JSON.stringify(parsed));
         if (parsed.pages && parsed.pages.length > 0)
           setSelectedPageId(parsed.pages[0].id);
+        pushHistory(parsed, "Loaded from local file");
       } catch {
         alert("Invalid JSON file");
       }
     };
     reader.readAsText(file);
     e.target.value = "";
+  };
+
+  const handleLoadFromLink = (parsed) => {
+    setData(parsed);
+    setSavedData(JSON.stringify(parsed));
+    if (parsed.pages && parsed.pages.length > 0)
+      setSelectedPageId(parsed.pages[0].id);
+    pushHistory(parsed, "Loaded from URL");
+  };
+
+  const handleLoadClick = () => {
+    if (hasUnsavedChanges) {
+      setPendingLoadAction("showLoadDialog");
+      setShowUnsaved(true);
+    } else setShowLoadDialog(true);
+  };
+
+  const handleUnsavedSave = () => {
+    saveData();
+    setShowUnsaved(false);
+    if (pendingLoadAction === "showLoadDialog") setShowLoadDialog(true);
+    setPendingLoadAction(null);
+  };
+
+  const handleUnsavedDiscard = () => {
+    setShowUnsaved(false);
+    if (pendingLoadAction === "showLoadDialog") setShowLoadDialog(true);
+    setPendingLoadAction(null);
+  };
+
+  const handleRevert = (idx) => {
+    const entry = history[idx];
+    if (!entry) return;
+    setData(entry.data);
+    historyIdxRef.current = idx;
+    setHistoryIdx(idx);
+    if (entry.data.pages && entry.data.pages.length > 0)
+      setSelectedPageId(entry.data.pages[0].id);
+    setShowHistory(false);
   };
 
   return (
@@ -354,7 +662,6 @@ export default function App() {
               </span>
             )}
           </div>
-          {/* Global search bar */}
           <button
             className="global-search-trigger"
             onClick={() => setShowSearch(true)}
@@ -376,12 +683,33 @@ export default function App() {
           </button>
         </div>
         <div className="header-right">
-          <span className="header-credit">
-            Engineered by Akhil Antony Joseph Rio
-          </span>
+          <span className="header-credit">V2.0.122</span>
+          {hasUnsavedChanges && (
+            <span className="unsaved-indicator" title="Unsaved changes">
+              ● Unsaved
+            </span>
+          )}
           <button
             className="icon-btn"
-            onClick={() => fileInputRef.current.click()}
+            onClick={() => setShowHistory(true)}
+            title="Edit history"
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <polyline points="1 4 1 10 7 10" />
+              <path d="M3.51 15a9 9 0 1 0 .49-4" />
+            </svg>
+            <span>History</span>
+          </button>
+          <button
+            className="icon-btn"
+            onClick={handleLoadClick}
             title="Load JSON"
           >
             <svg
@@ -403,7 +731,7 @@ export default function App() {
             type="file"
             accept=".json"
             style={{ display: "none" }}
-            onChange={loadData}
+            onChange={handleFileLoad}
           />
           <button
             className={`icon-btn${isLocked ? " lock-btn-locked" : ""}`}
@@ -525,7 +853,7 @@ export default function App() {
             <Editor
               key={selectedPage.id}
               page={selectedPage}
-              onUpdatePage={updatePage}
+              onUpdatePage={updatePageDebounced}
               allPages={data.pages}
               onSelectPage={setSelectedPageId}
               isLocked={isLocked}
@@ -548,6 +876,31 @@ export default function App() {
           pages={data.pages}
           onSelectPage={setSelectedPageId}
           onClose={() => setShowSearch(false)}
+        />
+      )}
+      {showLoadDialog && (
+        <LoadSourceDialog
+          onLoadLocal={doLoadLocal}
+          onLoadFromLink={handleLoadFromLink}
+          onClose={() => setShowLoadDialog(false)}
+        />
+      )}
+      {showUnsaved && (
+        <UnsavedChangesDialog
+          onSave={handleUnsavedSave}
+          onDiscard={handleUnsavedDiscard}
+          onCancel={() => {
+            setShowUnsaved(false);
+            setPendingLoadAction(null);
+          }}
+        />
+      )}
+      {showHistory && (
+        <HistoryPanel
+          history={history}
+          currentIdx={historyIdx}
+          onRevert={handleRevert}
+          onClose={() => setShowHistory(false)}
         />
       )}
     </div>
