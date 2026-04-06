@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/HushNotes/static/css/main.b03a2437.css",
-    "main.js": "/HushNotes/static/js/main.9c972aff.js",
+    "main.css": "/HushNotes/static/css/main.ef5d7626.css",
+    "main.js": "/HushNotes/static/js/main.fc58edd3.js",
     "index.html": "/HushNotes/index.html",
-    "main.b03a2437.css.map": "/HushNotes/static/css/main.b03a2437.css.map",
-    "main.9c972aff.js.map": "/HushNotes/static/js/main.9c972aff.js.map"
+    "main.ef5d7626.css.map": "/HushNotes/static/css/main.ef5d7626.css.map",
+    "main.fc58edd3.js.map": "/HushNotes/static/js/main.fc58edd3.js.map"
   },
   "entrypoints": [
-    "static/css/main.b03a2437.css",
-    "static/js/main.9c972aff.js"
+    "static/css/main.ef5d7626.css",
+    "static/js/main.fc58edd3.js"
   ]
 }
